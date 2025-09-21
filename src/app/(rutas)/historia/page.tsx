@@ -1,24 +1,24 @@
 const timeline = [
   {
-    year: "2012",
+    year: "2022",
     title: "El primer lote",
     copy:
       "En una cocina familiar en Monterrey nace la receta base, cuidando la fermentación lenta y el toque ahumado perfecto.",
   },
   {
-    year: "2016",
+    year: "2023",
     title: "Alianza con productores",
     copy:
       "Nos asociamos con agricultores de chile de la región para asegurar calidad, trazabilidad y comercio justo.",
   },
   {
-    year: "2019",
+    year: "2025",
     title: "Nacimiento de Alictiva",
     copy:
       "Presentamos oficialmente la marca en mercados locales, con tres salsas emblemáticas y talleres gastronómicos.",
   },
   {
-    year: "2023",
+    year: "2025",
     title: "Expansión y laboratorio creativo",
     copy:
       "Abrimos nuestro laboratorio de salsas experimentales y lanzamos ediciones limitadas en colaboración con chefs.",
