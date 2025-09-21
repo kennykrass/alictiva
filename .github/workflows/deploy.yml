@@ -32,7 +32,8 @@ jobs:
 
       - name: Build static export
         env:
-          # Let the config derive basePath/assetPrefix from GITHUB_REPOSITORY
+          # Expose repo name as basePath for client-side assets (logos, etc.).
+          NEXT_PUBLIC_BASE_PATH: ${{ github.event.repository.name }}
           GITHUB_ACTIONS: true
         run: npm run build
 
@@ -51,4 +52,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
