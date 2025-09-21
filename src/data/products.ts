@@ -9,24 +9,24 @@ export type Product = {
 export const products: Product[] = [
   {
     id: "brasa-ancestral",
-    name: "Brasa Ancestral",
-    slug: "brasa-ancestral",
+    name: "Original",
+    slug: "original",
     heatLevel: 3,
-    shortDescription: "Balance cítrico y ahumado inspirado en los comales de la costa Pacífica.",
+    shortDescription: "Nuestra salsa base: equilibrio clásico entre notas cítricas y humo suave para el día a día.",
   },
   {
     id: "marea-verde",
-    name: "Marea Verde",
-    slug: "marea-verde",
+    name: "Inclusiva",
+    slug: "inclusiva",
     heatLevel: 2,
-    shortDescription: "Salsa verde con hierbas frescas y acidez brillante para cualquier antojito.",
+    shortDescription: "Verde, fresca y amable con todos los paladares: hierbas, acidez ligera y mucha versatilidad.",
   },
   {
     id: "roja-vibrante",
-    name: "Roja Vibrante",
-    slug: "roja-vibrante",
+    name: "Radioactiva",
+    slug: "radioactiva",
     heatLevel: 4,
-    shortDescription: "Chile de árbol y ajo rostizado con final dulce que enciende cada bocado.",
+    shortDescription: "Roja intensa de chiles y ajo rostizado: golpe de sabor inmediato con final prolongado.",
   },
   {
     id: "doble-fuego",
