@@ -129,21 +129,21 @@ export function SheetContent({
     bottom: 0,
     [isLeft ? "left" : "right"]: 0,
     width: "min(92vw, 360px)",
-    maxHeight: "90vh",
+    height: "100vh",
     padding: "1.5rem",
     borderRadius: 32,
     background: "var(--background)",
     backdropFilter: "blur(6px)",
     boxShadow: "var(--shadow-soft)",
     border: "1px solid var(--border)",
-    overflow: "auto",
+    overflowY: "auto",
   } as React.CSSProperties;
 
   return (
     <div className="fixed inset-0 z-50" role="presentation">
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-black/40"
+        className="absolute inset-0 z-0 bg-black/40"
         onClick={() => setOpen(false)}
       />
       <aside
@@ -152,7 +152,7 @@ export function SheetContent({
         aria-label={ariaLabel ?? title ?? "Panel"}
         // Tailwind classes (when available) + robust inline fallback
         className={cn(
-          "pointer-events-auto", // ensure click-through
+          "relative z-10 pointer-events-auto", // ensure above overlay
           isLeft ? "sm:pl-8" : "sm:pr-8",
           className
         )}
