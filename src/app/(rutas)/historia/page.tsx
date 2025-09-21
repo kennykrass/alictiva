@@ -3,7 +3,7 @@ const timeline = [
     year: "2012",
     title: "El primer lote",
     copy:
-      "En una cocina familiar en Guadalajara nace la receta base, cuidando la fermentación lenta y el toque ahumado perfecto.",
+      "En una cocina familiar en Monterrey nace la receta base, cuidando la fermentación lenta y el toque ahumado perfecto.",
   },
   {
     year: "2016",

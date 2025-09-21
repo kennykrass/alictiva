@@ -1,4 +1,8 @@
+"use client";
+
+import { Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 import { RecipeCard } from "@/components/RecipeCard";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -14,20 +18,10 @@ const difficultyOptions = [
   { value: "difícil", label: "Difícil" },
 ];
 
-type RecetasPageProps = {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-};
-
-export const metadata = {
-  title: "Recetas",
-  description: "Recetas con salsas Alictiva para inspirar tu próxima reunión.",
-};
-
-export default async function RecetasPage({ searchParams }: RecetasPageProps) {
-  const params = await searchParams;
-  const selectedSalsa = typeof params.salsa === "string" ? params.salsa : "";
-  const selectedDifficulty =
-    typeof params.dificultad === "string" ? params.dificultad : "";
+function RecetasClient() {
+  const searchParams = useSearchParams();
+  const selectedSalsa = searchParams.get("salsa") ?? "";
+  const selectedDifficulty = searchParams.get("dificultad") ?? "";
 
   const productMap = new Map(products.map((product) => [product.id, product] as const));
 
@@ -116,5 +110,13 @@ export default async function RecetasPage({ searchParams }: RecetasPageProps) {
         )}
       </section>
     </div>
+  );
+}
+
+export default function RecetasPage() {
+  return (
+    <Suspense fallback={<div className="px-4 py-12 sm:px-6">Cargando…</div>}>
+      <RecetasClient />
+    </Suspense>
   );
 }

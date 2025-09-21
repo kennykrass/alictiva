@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy:docs": "REPO_NAME=alictiva NEXT_PUBLIC_BASE_PATH=$REPO_NAME NEXT_DISABLE_FONT_DOWNLOADS=1 next build && rm -rf docs && mkdir -p docs && cp -R out/* docs/ && touch docs/.nojekyll && git add docs && git commit -m 'docs: publish' || true && git push"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

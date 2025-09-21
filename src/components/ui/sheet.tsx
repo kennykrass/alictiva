@@ -53,39 +53,50 @@ export function Sheet({ children, defaultOpen = false }: SheetProps) {
   );
 }
 
+type AugmentProps = React.HTMLAttributes<HTMLElement> & React.AriaAttributes & Record<string, unknown>;
+
 interface SheetTriggerProps {
-  children: React.ReactElement;
+  // Accept any React element (button, a, div...) and allow augmenting its props
+  children: React.ReactElement<AugmentProps>;
 }
 
 export function SheetTrigger({ children }: SheetTriggerProps) {
   const { open, setOpen } = useSheetContext();
 
-  return React.cloneElement(children, {
+  const mergedProps: AugmentProps = {
     "aria-expanded": open,
     onClick: (event: React.MouseEvent) => {
-      children.props.onClick?.(event);
+      const handler = (children.props as AugmentProps).onClick as
+        | ((e: React.MouseEvent) => void)
+        | undefined;
+      handler?.(event);
       if (!event.defaultPrevented) {
         setOpen(true);
       }
     },
-  });
+  };
+  return React.cloneElement(children, mergedProps);
 }
 
 interface SheetCloseProps {
-  children: React.ReactElement;
+  children: React.ReactElement<AugmentProps>;
 }
 
 export function SheetClose({ children }: SheetCloseProps) {
   const { setOpen } = useSheetContext();
 
-  return React.cloneElement(children, {
+  const mergedProps: AugmentProps = {
     onClick: (event: React.MouseEvent) => {
-      children.props.onClick?.(event);
+      const handler = (children.props as AugmentProps).onClick as
+        | ((e: React.MouseEvent) => void)
+        | undefined;
+      handler?.(event);
       if (!event.defaultPrevented) {
         setOpen(false);
       }
     },
-  });
+  };
+  return React.cloneElement(children, mergedProps);
 }
 
 interface SheetContentProps extends React.HTMLAttributes<HTMLDivElement> {
