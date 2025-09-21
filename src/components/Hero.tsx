@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { BASE_PATH } from "@/lib/base-path";
 
 export function Hero() {
   return (
@@ -29,7 +28,7 @@ export function Hero() {
           <div className="order-first -mt-2 w-full justify-self-end sm:order-none sm:mt-0 sm:max-w-[520px]">
             <div className="aspect-[4/3] overflow-hidden rounded-3xl border border-border/60 bg-background/70 shadow-soft">
               <Image
-                src={`${BASE_PATH}/logo-alictiva.jpg`}
+                src="/logo-alictiva.jpg"
                 alt="Logotipo de Alictiva"
                 width={1040}
                 height={780}

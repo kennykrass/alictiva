@@ -8,7 +8,6 @@ import { Menu } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { BASE_PATH } from "@/lib/base-path";
 
 const navLinks = [
   { href: "/", label: "Inicio" },
@@ -39,7 +38,7 @@ export function Navbar() {
           <span className="sr-only">Alictiva</span>
           <span className="overflow-hidden rounded-xl border border-border/60 bg-background/70 shadow-soft">
             <Image
-              src={`${BASE_PATH}/logo-alictiva.jpg`}
+              src="/logo-alictiva.jpg"
               alt="Logotipo de Alictiva"
               width={120}
               height={40}
