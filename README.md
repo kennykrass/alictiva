@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ALICTIVA Frontend
 
-## Getting Started
+Interfaz creada con Next.js (App Router), Tailwind CSS v4 y componentes inspirados en shadcn/ui para la marca Alictiva.
 
-First, run the development server:
+## Comandos
+- `npm run dev`: inicia el servidor de desarrollo en `http://localhost:3000`.
+- `npm run build`: compila la app para producción.
+- `npm run start`: ejecuta la compilación generada.
+- `npm run lint`: corre las reglas de ESLint.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Deploy en GitHub Pages
+
+La app está preparada para exportar estáticamente y publicar en GitHub Pages.
+
+1) Crea el repo en tu cuenta (ej: `kennykrass/alictiva`) y sube el código:
+
+```
+git init
+git branch -M main
+git remote add origin git@github.com:kennykrass/alictiva.git
+git add -A
+git commit -m "init: Alictiva web"
+git push -u origin main
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2) La acción `.github/workflows/deploy.yml` compila y publica en Pages.
+   - Se ejecuta en cada push a `main`.
+   - Publica el directorio `out` generado por `next build`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3) Activa Pages en tu repo:
+   - Settings → Pages → Source: GitHub Actions.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4) URL de prueba (sin dominio): `https://kennykrass.github.io/<nombre-del-repo>/`.
+   - La configuración detecta el nombre del repo y ajusta `basePath`/`assetPrefix` automáticamente.
 
-## Learn More
+5) Dominio propio (opcional):
+   - En Settings → Pages puedes añadir tu dominio (CNAME).
+   - Si usas dominio propio, no necesitas `basePath` adicional.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Personalizar la paleta
+Los colores principales viven como variables CSS en `src/app/globals.css` (sección `:root` y `.dark`). Cambia los valores HEX y, si es necesario, ajusta los tonos de hover definidos en los componentes (`src/components/ui/button.tsx`) para mantener el contraste AA.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Estructura destacada
+- `src/app`: rutas App Router, con landing y secciones (`(rutas)/productos`, `recetas`, `historia`, `contacto`).
+- `src/components`: Navbar, Hero, tarjetas y formularios reutilizables.
+- `src/data`: catálogos estáticos de salsas y recetas.
+- `tailwind.config.ts`: tokens de tema y escala de picor para las utilidades Tailwind.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Accesibilidad y UI
+- Navegación mobile con `Sheet`, enlaces accesibles y focus visibles.
+- Componentes `Button` y `Badge` consumen los tokens (`--primary`, `--secondary`, etc.).
+- Formularios con labels y mensajes de confirmación sin backend.
